@@ -1,0 +1,19 @@
+<%# obj is more generic and we can refer to it in our modules  %>
+
+
+<% if obj.errors.any? %>
+  
+    <h4 >The following errors prevented the <%= obj.class.name.downcase %> from being saved </h4>
+    <ul>
+      <% obj.errors.full_messages.each do |msg| %>
+        <%= msg %>
+        
+
+      <% end %>
+    </ul>
+   
+    <button type="button" >
+     
+    </button>
+  
+<% end %>

@@ -7,14 +7,9 @@
          
    
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <%= stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+
   
-  <%= csrf_meta_tags %>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-Source
-
+ 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
    
@@ -25,7 +20,7 @@ Source
    
 
 
-  <nav>
+  <nav class="pink accent-2">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">E-haggle</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -41,12 +36,16 @@ Source
    
     <%= yield %>
 
-     <footer class="page-footer">
+    <main>
+    </main>
+
+  </body>
+   <footer class='pink accent-2' class="page-footer" style="position:fixed;bottom:0;left:0;width:100%;">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">E-commerce app to barter goods</h5>
-                <p class="grey-text text-lighten-4">Bargaining or haggling is a type of negotiation in which the buyer and seller of a good or service debate the price and exact nature of a transaction. If the bargaining produces agreement on terms, the transaction takes place. Bargaining is an alternative pricing strategy to fixed prices.</p>
+                <p class="grey-text text-lighten-4">Bargaining or haggling is a type of negotiation in which the buyer and seller of a good or service debate the price and exact nature of a transaction.</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Links</h5>
@@ -65,6 +64,4 @@ Source
         </footer>
 
      
-
-  </body>
 </html>

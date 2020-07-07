@@ -1,7 +1,35 @@
+<h1 class="center">Start Haggling today </h1>
+
+<%# errors %>
+<%if @user.errors.any?%>
+    <h2>The following errors prevented the User from being saved</h2>
+    <ul>
+    <%@user.errors.full_messages.each do |msg|%>
+        <li><%=msg%></li>
+    </ul>
+      <%end%>
+<%end%>
+
+<%# signup-form %>
 
 <%= form_for @user do |f| %>
-<%=f.label :username%>
-<%f.text_field :username%>
+        <h4>Username:</h4> 
+        <%=f.text_field :username%> 
+        <h4>Email:</h4>     
+        <%=f.text_field :email%> 
+        <h4>Password:</h4> 
+        <%=f.text_field :password%> 
+        
 
+<a onclick="M.toast({html: 'Z is the best cohort teacher ever!!!!'})" class="btn">I love coding!</a><br><br><br>
+
+<button class="btn-floating btn-large pulse pink" type="submit" name="action">Create User
+    <i class="material-icons left">cloud</i>
+  </button>
 
 <%end%>
+<%# back %>
+<br><br>
+ <a class="btn waves-effect waves-light" href='<%=root_path%>'
+    <i class="material-icons left">Back</i>
+  </a>

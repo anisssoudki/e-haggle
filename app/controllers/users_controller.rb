@@ -15,6 +15,13 @@ end
 
 def create
     @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "Welcome to e-haggle"
+      redirect_to user_products_path
+
+    else
+      render "new"
+    end
 end
 
 private
