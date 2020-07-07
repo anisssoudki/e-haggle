@@ -1,0 +1,35 @@
+<h1>Edit your product</h1>
+
+<%# product creation errors here, @product coming from the create action %>
+<%if @product.errors.any?%>
+    <h2>The following errors prevented the product from being saved</h2>
+    <ul>
+    <%@product.errors.full_messages.each do |msg|%>
+        <li><%=msg%></li>
+    <%end%>
+    </ul>
+<%end%>
+<%# rails guide form_helper %>
+<%# 2.3.1 Dealing with Namespaces
+If you have created namespaced routes, form_with has a nifty shorthand for that too. If your application has an admin namespace then %>
+
+<%= form_with(model: [:user, @product], local: true) do |f|%>
+
+    <%=f.label :name%><br/>
+    <%= f.text_field :name  %><br/>
+
+     <%=f.label :price%><br/>
+    <%= f.number_field :price, value: @product.price ? '%.2f' % @product.price : nil, min: 0, step: 0.01 %>$<br/>
+
+    <%=f.label :description%><br/>
+    <%= f.text_field :name  %><br/>
+<br/>
+    <%=f.label :image%><br/>
+    <%= f.file_field :image  %><br/>
+
+
+<br/>
+<br/>
+
+  <%=f.submit%>
+  <%end%>
