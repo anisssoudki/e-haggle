@@ -1,0 +1,24 @@
+git add -A 
+git commit -m 
+git status 
+git push origin master
+
+notes:
+Idea: e-marketplace where u can view goods or services 
+
+
+model: user - product - categorie - (product-categorie )->joint-table
+
+user: username email password
+product: Name - description - image - price 
+categorie: name 
+product-categorie: product_id categorie_id user_it (like or favorite attribute)
+
+future: comments-also can be an attr in p-c <--- 
+
+note->the user_id in product categorie is to count the likes or favorites
+relationships:
+user has many_products 
+product belongs to user 
+product has many categories through p-c 
+categorie has many product through p-c 
