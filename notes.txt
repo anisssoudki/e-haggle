@@ -24,3 +24,21 @@ product belongs to user
 product has many categories through p-c 
 categorie has many product through p-c 
 
+this is new to me i looked up how to upload images to the application found out that we have to install something called active storage and migrate it in the database
+
+  rails active_storage:install
+The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+Copied migration 20200707044643_create_active_storage_tables.active_storage.rb from active_storage
+[21:46:43]  e-haggle (master)
+// ♥  rails db:migrate
+The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+== 20200707044643 CreateActiveStorageTables: migrating ========================
+-- create_table(:active_storage_blobs, {})
+   -> 0.0035s
+-- create_table(:active_storage_attachments, {})
+   -> 0.0035s
+== 20200707044643 CreateActiveStorageTables: migrated (0.0109s) ===============
+-->>>>>>the console rendered the above
+
+question:
+----->if the blob saves in the database as binary data or another way versus saving the actual url on a server and call it back in an url tag<<-----

@@ -6,6 +6,7 @@
             <th>Name:</th>
             <th>Price:</th>
             <th>Description:</th>
+            <th>image:</th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +15,12 @@
             <td><%=product.name %></td>
             <td><%=product.price%></td>
             <td><%=product.description%></td>
+            <td>
+                <div 
+                style="width:100px; height:auto">
+                <%=image_tag(product.image, style:'width:100%')%>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>

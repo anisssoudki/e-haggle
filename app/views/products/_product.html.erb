@@ -4,8 +4,9 @@
 <%=@product.name%>
 <%=@product.description%>
 <%=@product.price%>
-
-<img src= "" alt="Girl in a jacket" >
+<div style="width:100px; height:auto">
+<%=image_tag(@product.image, style:'width:100%')%>
+</div>
 
 
 <%@product.categories.each do |categorie|%>

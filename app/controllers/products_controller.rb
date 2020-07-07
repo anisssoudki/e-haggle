@@ -30,9 +30,9 @@ end
     
     def update 
         @product = Product.find(params[:id])
-       if  @product.update(product_params)
+       if  @product.update(product_params) 
         flash[:notice] = "Product was updated successfully"
-        redirect_to user_product_path(@product)
+        redirect_to user_product_path(@product) 
        else 
         render 'edit'
        end
