@@ -1,0 +1,10 @@
+<%=@product.user.username%>
+
+
+<%=@product.name%>
+<%=@product.description%>
+<%=@product.price%>
+
+<%@product.categories.each do |categorie|%>
+<%=categorie.name%>
+<%end%>
