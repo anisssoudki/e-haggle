@@ -42,3 +42,10 @@ The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler
 
 question:
 ----->if the blob saves in the database as binary data or another way versus saving the actual url on a server and call it back in an url tag<<-----
+
+
+
+after around 8 or 9 hours of trying to figure out how to import jquery for the materialize gem correctly i finally figured it out 
+https://medium.com/@guilhermepejon/how-to-install-materialize-css-in-rails-6-0-0-beta2-using-webpack-347c03b7104e
+https://www.botreetechnologies.com/blog/introducing-jquery-in-rails-6-using-webpacker 
+following these 2 guids it worked with some slight changes that i have notated above the files also make sure to create a stylesheet folder inside of the javascript file in the asset pipeline and import the materialize there using this code @import url(materialize-css/dist/css/materialize);

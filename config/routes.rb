@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'sessions#login'
+  root 'homepage#home'
+  get '/about', to: 'homepage#about'
+  get '/terms', to: 'homepage#terms'
+
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
 

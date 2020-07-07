@@ -3,13 +3,15 @@
     <h2>The following errors prevented the product from being saved</h2>
     <ul>
     <%@product.errors.full_messages.each do |msg|%>
-       <li> <%=msg%> </li>
-    <%end%>
+        <li><%=msg%></li>
     </ul>
+      <%end%>
 <%end%>
+<%# rails guide form_helper %>
+<%# 2.3.1 Dealing with Namespaces
+If you have created namespaced routes, form_with has a nifty shorthand for that too. If your application has an admin namespace then %>
 
-
-<%=  form_with scope: :product, url: user_products_path, local: true do |f|%>
+<%= form_with(model: [:user, @product], local: true) do |f|%>
 
     <%=f.label :name%><br/>
     <%= f.text_field :name  %><br/>
@@ -27,7 +29,7 @@
 <br/>
 <br/>
 
-  <%= f.submit%>
+  <%=f.submit%>
   <%end%>
 <br>
   <%= link_to 'Product Listing Page', user_products_path%>
