@@ -22,7 +22,7 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
     <%= f.number_field :price, value: @product.price ? '%.2f' % @product.price : nil, min: 0, step: 0.01 %>$<br/>
 
     <%=f.label :description%><br/>
-    <%= f.text_field :name  %><br/>
+    <%= f.text_field :description  %><br/>
 <br/>
     <%=f.label :image%><br/>
     <%= f.file_field :image  %><br/>

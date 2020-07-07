@@ -18,7 +18,7 @@
     <%= f.number_field :price, value: @product.price ? '%.2f' % @product.price : nil, min: 0, step: 0.01 %>$<br/>
 
     <%=f.label :description%><br/>
-    <%= f.text_field :name  %><br/>
+    <%= f.text_field :description  %><br/>
 <br/>
     <%=f.label :image%><br/>
     <%= f.file_field :image  %><br/>
@@ -29,3 +29,5 @@
 
   <%= f.submit%>
   <%end%>
+<br>
+  <%= link_to 'Product Listing Page', user_products_path%>

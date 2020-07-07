@@ -1,14 +1,24 @@
+
+<div style="width:100px; height:auto">
+<%=image_tag(@product.image, style:'width:100%')%>
+</div>
+
 <%=@product.user.username%>
 
 
 <%=@product.name%>
 <%=@product.description%>
 <%=@product.price%>
-<div style="width:100px; height:auto">
-<%=image_tag(@product.image, style:'width:100%')%>
-</div>
 
+<ul>
+    <li><%= button_to 'edit', edit_user_product_path(@product)%></li><br>
+    <li><%= button_to 'Delete', user_product_path(@product), method: :delete, data: {confirm: "Are You Sure?"}%></li><br>
+   
+</ul>
 
 <%@product.categories.each do |categorie|%>
 <%=categorie.name%>
+
+
 <%end%>
+<%= link_to 'Product Listing Page', user_products_path%>

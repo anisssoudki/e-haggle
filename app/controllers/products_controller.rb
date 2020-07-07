@@ -38,6 +38,13 @@ end
        end
     end
 
+    def destroy
+        @product = Product.find(params[:id])
+        @product.destroy
+        redirect_to user_products_path
+    end
+
+
     private
     def product_params
         params.require(:product).permit(:name, :price, :description, :image)
