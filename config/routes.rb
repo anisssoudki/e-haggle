@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   get '/about', to: 'homepage#about'
   get '/terms', to: 'homepage#terms'
 
-  get '/login', to: 'sessions#new'
+  get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
-
-  delete '/logout', to: 'sessions#logout' 
+  delete '/logout', to: 'sessions#logout'
 
   get 'signup', to: 'users#new'
 

@@ -7,49 +7,54 @@
          
 <style>
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  
+    margin: 0;
+    padding: 0;
+    height: 100%
+    flex: 1;
 }
 main {
 flex: 1;
 
 }
-  
+  footer {
+     flex-shrink: none;
+  }
 
 </style>
 
    
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  
- 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
    
 
 
+  
+  <body>
+    
   <nav class="pink accent-2">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">E-haggle</a>
+       
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-
+        
         <li> <a href="<%=root_path%>" >home</a> </li>
         <li><a href="<%=about_path%>">About</a></li>
         <li><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/doodles">I'm Feeling Lucky</a></li>
+
+            <% if logged_in? %>
+        <li><%=link_to 'Logout', logout_path, method: :delete %></li>
+         <%end%>
       </ul>
+     
     </div>
   </nav>
 
   <%=render 'layouts/messages'%>
-   
-    <%= yield %>
-
-    <main>
-    </main>
-
+   <%= yield %>
+    
   </body>
+
    <footer   class='sticky-footer pink accent-2'>
           <div class="container">
             <div class="row">
@@ -67,11 +72,10 @@ flex: 1;
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020 Copyright Text
+           © E-Copyright 2020 <br>
+            All rights reserved. Powered by Materialize
             <a class="grey-text text-lighten-4 right" href='<%=terms_path%>'>Terms of use</a>
             </div>
           </div>
         </footer>
-
-      
 </html>

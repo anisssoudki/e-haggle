@@ -1,7 +1,7 @@
 
-      <% if session.has_key?(:user_id) %>
-      <%= link_to 'LogOut', logout_path, method: :delete %>
-      <%end%>
+      <main>
+    
+    
 <!-- Dropdown Trigger -->
 <h1 class="center">
   <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Touch Me!</a>
@@ -9,9 +9,9 @@
  
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
-    <li><a href=<%=login_path%>>LOG IN</a></li>
+    
     <li><a href=<%=signup_path%>>Sign Up</a></li>
-   
+    <li><a href=<%=login_path%>>LOG IN</a></li>
     
     <li class="divider" tabindex="-1"></li>
     <li><a href="#!"><i class="material-icons"><img   id="fb" alt="fbshare" src='https://github.com/anisssoudki/just-a-logo/blob/master/Screenshot%20(34).png?raw=true'></i>Sign in with facebook</a></li>
@@ -37,7 +37,7 @@
 <div class="center">
 <iframe width="724" height="407" src="https://www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allow="accelerometer; autoplay=1; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
+</main>
 
 
  
