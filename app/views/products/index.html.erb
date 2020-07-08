@@ -1,35 +1,5 @@
 <h1 class="center"><strong>Showing product details</strong></h1>
 
-<h6>
-<table class="responsive-table">
-    <thead>
-        <tr>
-            <th>Product Owner:</th>
-            <th>Name:</th> 
-            <th>image:</th>
-            <th>Show me more:</th>
-        </tr>
-    </thead>
-    
-    <tbody>
-        <tr>
-        <div>
-            <%@products.each do |product|%>
-            <td><%=product.user.username %></td>
-            <td><%=product.name %></td>
-            <td>
-            <div style="width:100px; height:auto">
-                <%=image_tag(product.image, style:'width:50%')%>
-                </div>
-            </td>
 
-            <td><%=link_to 'show', '#'%></td>
-            </div>
-        </tr>
-    </tbody>
-</table>
-<%end%>
-<p>
-  <%=link_to 'Display new product', new_user_product_path%>
-</p>
-</h6>
+<%=will_paginate @product%>
+<%=render 'product'%>

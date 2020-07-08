@@ -16,8 +16,9 @@ gem 'sass-rails', '>= 6'
 gem 'materialize-sass', '~> 1.0.0'
  gem 'material_icons' 
 # jquery gem doesnt work for rails six anymore 
-# pagination gem
+# pagination gem  https://github.com/mislav/will_paginate
 gem 'will_paginate', '~> 3.1.0'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

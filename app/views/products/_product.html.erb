@@ -1,26 +1,30 @@
-<%@product.image%>
-<div style="width:100px; height:auto">
-<%=image_tag(@product.image, style:'width:100%')%>
-</div>
+ <%@products.each do |product|%>
+<div class="center">
 
-
-
-<%=@product.user.username%>
-
-
-<%=@product.name%>
-<%=@product.description%>
-<%=@product.price%>
-
-<ul>
-    <li><%= button_to 'edit', edit_user_product_path(@product)%></li><br>
-    <li><%= button_to 'Delete', user_product_path(@product), method: :delete, data: {confirm: "Are You Sure?"}%></li><br>
-   
-</ul>
-
-<%@product.categories.each do |categorie|%>
-<%=categorie.name%>
-
-
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="center">
+          <img style="width:100px; height:auto">
+                <%=image_tag(product.image, style:'width:15%')%>
+                <br><br>
+          <span class="card-title"><strong><%=product.name %></strong> $<%=product.price %></span>
+        </div>
+        <div class="btn-floating btn-small pulse pink">
+         <a href="#"> <i class="material-icons">zoom_in</i> </a>
+        
+        </div>
+        <div class="card-content">
+         <p><%=product.user.username %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+    
 <%end%>
-<%= link_to 'Product Listing Page', user_products_path%>
+
+<p>
+  <%=link_to 'Display new product', new_user_product_path%>
+</p>
+
+
+

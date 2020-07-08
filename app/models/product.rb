@@ -7,4 +7,5 @@ class Product < ApplicationRecord
     validates :description, presence: true, length: { minimum: 10, maximum: 300 }
     validates :image, presence: :true
     accepts_nested_attributes_for :categories
+    # self.per_page = 3
   end
