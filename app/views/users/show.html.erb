@@ -1,3 +1,30 @@
+<div class="center">
+    <h1 class="">
+        <%= @user.username%>'s Homepage
+    </h1>
+</div>
 
-<%= @user.username%>
-<%= @user.email%>
+
+
+
+
+
+
+
+
+
+
+<span class= "center-align">
+  <div class= "btn-floating btn-large pulse teal lighten-5"> <%= link_to 'Create', new_user_product_path(@user, @product)%>
+</div>
+</span>
+<br><br>
+<span class= "right-align">
+  <div class= "btn-floating btn-large pulse lime lighten-5"> <%= link_to 'Update', new_user_product_path(@user, @product)%>
+</div>
+</span>
+<br><br>
+<span class= "center-align">
+  <div class= "btn-floating btn-large pulse red darken-2"> <%= link_to 'Delete', new_user_product_path(@user, @product)%>
+</div>
+</span>

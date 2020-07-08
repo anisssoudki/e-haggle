@@ -3,15 +3,20 @@
 
 <% if obj.errors.any? %>
   
-    <h4 >The following errors prevented the <%= obj.class.name.downcase %> from being saved </h4>
+    <h4 class='center-align lime' >The following errors prevented the <%= obj.class.name.downcase %> from being saved</h4>
     <ul>
       <% obj.errors.full_messages.each do |msg| %>
-        <%= msg %>
+      <h5 class='center-align red' ><%= msg %></h5>
+  </ul>
+        
+     
+    
+  
+       
         
 
       <% end %>
     </ul>
-   
     <button type="button" >
      
     </button>

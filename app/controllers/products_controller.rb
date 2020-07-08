@@ -10,17 +10,25 @@ class ProductsController < ApplicationController
     end
 
     def new
+      if params.include?('user_id')
+        @product = User.find_by_id(params[:user_id]).products.new
+        @product = User.find_by_id(params[:user_id]).products.build
+      else
+
     @product = Product.new
+        @house.room
+      end
     end
 
     def edit
     end
 
     def create
-        @product = Product.new(product_params)
+        @product = current_user.products.build(product_params)
         if   @product.save 
+         
             flash[:notice] = "Product has been successfully posted to e-haggle"
-             redirect_to user_product_path(@product)
+             redirect_to user_product_path(current_user, @product)
         else 
              render 'new'
         end
@@ -45,9 +53,11 @@ class ProductsController < ApplicationController
     private
 
       def product_params
-        params.require(:product).permit(:name, :price, :description, :image)
+        params.require(:product).permit(:name, :price, :description, :image,  product_category: [:like, category: [:name]])
       end
 
+
+      
       def set_product
         @product = Product.find(params[:id])
       end
