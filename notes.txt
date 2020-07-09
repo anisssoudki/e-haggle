@@ -55,3 +55,8 @@ and i also found a good resource like a website to check the format for email
 https://rubular.com/ this website here will check for the expression if it is valid or not
 i might attach a picture if anyone is confused but basically just follow the format and u have to escape the / and put an i at the end 
 if u do it incorrectly the website will correct you. i found it to be very helpful
+
+working on testing if we run command rails test it should let us know if we have tests or not i put some basic tests for 
+categories in the model test folder also turns out we can generate a test scaffold by using the following command
+rails generate test_unit:scaffold category but instead i just generated it automatically with the controller 
+went ahead and wrote some tests and now im going to try and work on the controller test integration

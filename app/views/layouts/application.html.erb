@@ -44,6 +44,7 @@ flex: 1;
 
             <% if logged_in? %>
         <li><%=link_to 'Logout', logout_path, method: :delete %></li>
+        
          <%end%>
       </ul>
      
@@ -54,7 +55,7 @@ flex: 1;
    <%= yield %>
     
   </body>
-
+<br><br><br><br>
    <footer   class='sticky-footer pink accent-2'>
           <div class="container">
             <div class="row">

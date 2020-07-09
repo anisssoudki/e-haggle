@@ -10,13 +10,15 @@ class ProductsController < ApplicationController
     end
 
     def new
+      @product_category =  ProductCategory.new
+      
       if params.include?('user_id')
         @product = User.find_by_id(params[:user_id]).products.new
         @product = User.find_by_id(params[:user_id]).products.build
       else
 
     @product = Product.new
-        @house.room
+     
       end
     end
 
@@ -24,7 +26,12 @@ class ProductsController < ApplicationController
     end
 
     def create
+        @product_category =  ProductCategory.new
+        
         @product = current_user.products.build(product_params)
+        @product_category.user = current_user
+      
+   
         if   @product.save 
          
             flash[:notice] = "Product has been successfully posted to e-haggle"
@@ -53,7 +60,7 @@ class ProductsController < ApplicationController
     private
 
       def product_params
-        params.require(:product).permit(:name, :price, :description, :image,  product_category: [:like, category: [:name]])
+        params.require(:product).permit(:name, :price, :description, :image,  product_categories: [:user_id, :like, category:[:name]])
       end
 
 
@@ -62,5 +69,9 @@ class ProductsController < ApplicationController
         @product = Product.find(params[:id])
       end
 
+      def category_params
+        params.require(:category).permit(:name)
+        
+      end
       
 end

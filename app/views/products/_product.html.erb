@@ -8,6 +8,12 @@
                 <%=image_tag(product.image, style:'width:15%')%>
                 <br><br>
           <span class="card-title"><strong><%=product.name %></strong> $<%=product.price %></span>
+
+        <%product.categories.each do |cat|%>
+        <%=cat.name%>
+          <%end%>
+
+
         </div>
         <div class="btn-floating btn-small pulse pink">
          <a href="#"> <i class="material-icons">zoom_in</i> </a>

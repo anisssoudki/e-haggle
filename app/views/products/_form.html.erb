@@ -20,9 +20,9 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
     <h4>Product Image (recommended)</h4> 
     <%= f.file_field :image  %><br/>
 <br>
-    <%=f.fields_for Category.new do |category| %>
+    <%=f.fields_for :category do |categories| %>
     <h4>Category</h4> 
-    <%=category.text_field :name%>
+    <%=categories.text_field :name%>
   <%end%>
 <br/>
 <br/>

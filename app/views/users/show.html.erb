@@ -2,22 +2,27 @@
     <h1 class="">
         <%= @user.username%>'s Homepage
     </h1>
+
+<% if logged_in? && (@user == current_user) %>
+     <span class= "center-align">
+  <div class= "btn-floating btn-large pulse teal lighten-5"> <%= link_to 'Haggle', new_user_product_path(@user, @product) %>
 </div>
+</span>   
+<%end%>
 
-
-
-
-
-
-
-
-
-
-
-<span class= "center-align">
-  <div class= "btn-floating btn-large pulse teal lighten-5"> <%= link_to 'Create', new_user_product_path(@user, @product)%>
 </div>
-</span>
+<% @user.products.each do |product|%>
+  <% if logged_in? && (product.user == current_user) %>
+      <div class="center">
+      <br><br><br><br><br>
+   
+       <h3 class="waves-effect waves-light btn pulse pink"><i class="material-icons left">cloud</i>Product_id <%=product.id%></h3>
+       <h4>  <div class="col s1"><%= product.name%><br></div></h4>
+          <h4><div class="col s1">  <%= product.price%> $</div></h4>
+          <div class="col s1"><%=image_tag(product.image, style: 'auto')%></div>
+    </div>
+    <%# ---------------------------create edit delete actions for product %>
+
 <br><br>
 <span class= "right-align">
   <div class= "btn-floating btn-large pulse lime lighten-5"> <%= link_to 'Update', new_user_product_path(@user, @product)%>
@@ -28,3 +33,22 @@
   <div class= "btn-floating btn-large pulse red darken-2"> <%= link_to 'Delete', new_user_product_path(@user, @product)%>
 </div>
 </span>
+ <%# ------------------------------------------------------------------------------------------- %>
+       <%product.categories.each do |cat|%>
+       <%=cat.name%>
+      <%end%>
+
+         <%end%>
+        
+
+<%end%>
+<br> <br><br><br><br><br><br> <br><br><br><br><br><br> <br><br><br><br><br>
+
+
+
+
+
+
+
+
+
