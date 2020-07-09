@@ -34,7 +34,7 @@ flex: 1;
     
   <nav class="pink accent-2">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">E-haggle</a>
+      <a href="/" class="brand-logo">E-haggle</a>
        
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
@@ -43,6 +43,7 @@ flex: 1;
         <li><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/doodles">I'm Feeling Lucky</a></li>
 
             <% if logged_in? %>
+             <li><%=link_to 'My haggle Page', user_path(current_user) %></li>
         <li><%=link_to 'Logout', logout_path, method: :delete %></li>
         
          <%end%>
