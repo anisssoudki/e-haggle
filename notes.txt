@@ -59,4 +59,4 @@ if u do it incorrectly the website will correct you. i found it to be very helpf
 working on testing if we run command rails test it should let us know if we have tests or not i put some basic tests for 
 categories in the model test folder also turns out we can generate a test scaffold by using the following command
 rails generate test_unit:scaffold category but instead i just generated it automatically with the controller 
-went ahead and wrote some tests and now im going to try and work on the controller test integration
+went ahead and wrote the scaffold tests but those usually get auto generated with the scaffold unit test generator and  now im going to try and work on the controller test integration, i might alter them a bit depending on my project

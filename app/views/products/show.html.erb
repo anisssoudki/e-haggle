@@ -3,6 +3,12 @@
 
 
 
+
+
+
+
+
+
  <div class="col s12 m7">
       <div class="card">
         <div class="center">
@@ -12,12 +18,24 @@
           <span class="card-title"><strong><%=@product.name%></strong> $<%=@product.price %></span>
 <br>
         <%=@product.description%>
-
-
         </div>
         
+
+
+
+          <span class= "right-align">
+  <div class= "btn-floating btn-large pulse lime lighten-5"> <%= link_to 'Update', edit_user_product_path(@product)%>
+</div>
+</span>
+<br><br>
+<span class= "center-align">
+  <div class= "btn-floating btn-large pulse red darken-2"> <%= link_to 'Delete', user_product_path(@product), method: :delete, data: {confirm: "Are you sure?"}%>
+</div>
+</span>
+
+
         <div class="card-content">
-       <h4>  <p>by: <%=@product.user.username %></p></h4>
+       <h4>  <p>by: <%=@product.user.username if @product.user %></p></h4>
         </div>
       </div>
     </div>

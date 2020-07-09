@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+    before_action :require_user, except: [:show, :index]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def show 
     end
@@ -69,9 +70,10 @@ class ProductsController < ApplicationController
         @product = Product.find(params[:id])
       end
 
-      def category_params
-        params.require(:category).permit(:name)
-        
+      def require_same_user
+        if current_user != @product.user 
+          flash[:alert] = "You can only edit or delete your own account"
+          redirect_to user_product_path(@product)
+        end
       end
-      
 end

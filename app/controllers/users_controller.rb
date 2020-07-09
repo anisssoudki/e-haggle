@@ -43,7 +43,7 @@ end
 def destroy
   @user.destroy
   session[:user_id] = nil if @user == current_user
-  flash[:notice] = "Account and all associated articles successfully deleted"
+  flash[:notice] = "Account and all associated Products successfully deleted"
   redirect_to root_path
 end
 
@@ -57,7 +57,7 @@ private
   end
 
   def require_same_user
-    if current_user != @user && !current_user.admin?
+    if current_user != @user 
       flash[:alert] = "You can only edit or delete your own account"
       redirect_to @user
     end

@@ -8,6 +8,32 @@
   <div class= "btn-floating btn-large pulse teal lighten-5"> <%= link_to 'Haggle', new_user_product_path(@user, @product) %>
 </div>
 </span>   
+
+
+  <h1 class="center">
+  <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Profile Console</a>
+</h1>
+ 
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    
+    <li><a href=<%=edit_user_path(@user)%>>Edit Your Profile</a></li>
+    <%# <%=link_to "del", user_path(@user), method: :delete, data: {confirm: "Warning!!!!! this will erase everything"%>
+    <%= link_to "Delete Profile", user_path(@user), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Warning!!!!! this will erase everything and cannot be undone."} %>
+    
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="#!"><i class="material-icons"><img   id="fb" alt="fbshare" src='https://github.com/anisssoudki/just-a-logo/blob/master/Screenshot%20(34).png?raw=true'></i>authenticate account with facebook</a></li>
+    <li><a href="<%=user_products_path(@user)%>">Browse Market</a></li>
+  
+  </ul>
+ 
+<div class="card-panel">
+    <span class="pink-text text-lighten-3 "><h1 class="center">E-HAGGLE</h1></span>
+  </div>
+
+
+
+
 <%end%>
 
 </div>
