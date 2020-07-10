@@ -27,7 +27,9 @@ def create
       redirect_to user_path(@user)
 
     else
+     
       render "new"
+      flash[:alert] = "you have entered incorrect information please try again"
     end
 end
 
@@ -42,6 +44,7 @@ end
 
 def destroy
   @user.destroy
+  # the if statment prevent the session of ending if ur an admin
   session[:user_id] = nil if @user == current_user
   flash[:notice] = "Account and all associated Products successfully deleted"
   redirect_to root_path

@@ -20,13 +20,14 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
     <h4>Product Image (recommended)</h4> 
     <%= f.file_field :image  %><br/>
 <br>
-    <%=f.fields_for :category do |categories| %>
+<%# --------------------------------------------------- %>
+<%# this is showing when i inspect but not displaying for some reason bug!!! %>
     <h4>Category</h4> 
-    <%=categories.text_field :name%>
+    <%=f.collection_select(:category_ids, Category.all, :id, :name)%>
   <%end%>
 <br/>
 <br/>
-
+<%# -------------------------------------------------- %>
  <button class="btn-floating btn-large pulse pink" type="submit" name="action">Create 
     <i class="material-icons left">cloud</i>
   </button>
@@ -37,8 +38,7 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
  <a class="btn waves-effect waves-light" href='<%=root_path%>'>Back
   </a>
   <%end%>
-<br>
+<br><br><br>
 <div class="btn waves-effect waves light">
   <%= button_to 'Product Listing Page', user_products_path%>
   </div>
-  <%end%>
