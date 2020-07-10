@@ -1,4 +1,15 @@
+
+<%if current_user.admin?%>
+
+
 <%@users.each do |user|%>
-<%= user.username%>
-<%= user.email%>
+<h2><li><%= user.username%>
+Email:<%= user.email%>
+<%=link_to "this users page", user_path(user)%>
+</li></h2>
 <%end%>
+<%else%>
+<div class="btn pulse pink lighten-4"> <h1 class="text white"><%=link_to "Hmmmm! looks like You have wandered off, no worries here at E-Haggle we have a solution for everything just click on the sad face ---> :( <--- or click on you're (My  haggle page) in the navigation located on the top-right hand corner of the screen enjoy haggling! and thank you for using our website. ", root_path%></h1></div>
+
+<%end%>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

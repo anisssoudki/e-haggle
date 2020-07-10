@@ -5,7 +5,7 @@
 <%# rails guide form_helper %>
 <%# 2.3.1 Dealing with Namespaces
 If you have created namespaced routes, form_with has a nifty shorthand for that too. If your application has an admin namespace then %>
-
+<%if current_user %>
 <%= form_with(model: [:user, @product], local: true) do |f|%>
 
       <h4>Product Name:</h4> 
@@ -41,3 +41,4 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
 <div class="btn waves-effect waves light">
   <%= button_to 'Product Listing Page', user_products_path%>
   </div>
+  <%end%>

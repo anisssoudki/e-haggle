@@ -27,10 +27,11 @@ class ProductsController < ApplicationController
     end
 
     def create
-        @product_category =  ProductCategory.new
         
-        @product = current_user.products.build(product_params)
-        @product_category.user = current_user
+        if current_user && current_user.admin? 
+        @product = current_user.products.build(product_params) 
+        else !current_user &&  current_user.admin?
+          @product = current_user.products.build(product_params) 
       
    
         if   @product.save 
@@ -40,6 +41,7 @@ class ProductsController < ApplicationController
         else 
              render 'new'
         end
+      end
     end
     
     def update 
@@ -71,7 +73,8 @@ class ProductsController < ApplicationController
       end
 
       def require_same_user
-        if current_user != @product.user 
+        # if current user is admin we will let him have his way and edit anyones account
+        if current_user != @product.user && !current_user.admin?
           flash[:alert] = "You can only edit or delete your own account"
           redirect_to user_product_path(@product)
         end

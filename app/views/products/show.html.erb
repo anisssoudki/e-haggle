@@ -1,27 +1,19 @@
 <h1 class="center">Showing<strong class=pink-text text-lighten-2  > <%=@product.name%></strong> details</h1>
-
-
-
-
-
-
-
-
-
-
  <div class="col s12 m7">
       <div class="card">
         <div class="center">
           <img style="width:100px; height:auto">
                 <%=image_tag(@product.image, style:'width:15%')%>
                 <br><br>
-          <span class="card-title"><strong><%=@product.name%></strong> $<%=@product.price %></span>
+<span class="card-title"><strong><%=@product.name%></strong> $<%=@product.price %></span>
 <br>
-        <%=@product.description%>
+ <%=@product.description%>
         </div>
+          </div>
+            </div>
         
 
-
+ <% if logged_in? && (@product.user == current_user || current_user.admin? ) %>
 
           <span class= "right-align">
   <div class= "btn-floating btn-large pulse lime lighten-5"> <%= link_to 'Update', edit_user_product_path(@product)%>
@@ -42,6 +34,6 @@
   </div>
 
 
-
+<%end%>
 
 <%= link_to 'Product Listing Page', user_products_path%>

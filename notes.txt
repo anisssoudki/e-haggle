@@ -60,3 +60,44 @@ working on testing if we run command rails test it should let us know if we have
 categories in the model test folder also turns out we can generate a test scaffold by using the following command
 rails generate test_unit:scaffold category but instead i just generated it automatically with the controller 
 went ahead and wrote the scaffold tests but those usually get auto generated with the scaffold unit test generator and  now im going to try and work on the controller test integration, i might alter them a bit depending on my project
+
+going to try and add admin functionality to users model
+here im going to add an extra column admin and set it base value to false 
+so the table will look something like this 
+
+id|username|email|password|admin
+---------------------------------
+1 |  user1 |     | pass   |false
+---------------------------------
+2 |        | ema |        |false
+---------------------------------
+3 |        |     |        |false
+where no one starts as an admin to begin with
+after creating and migrating the admin to users table we can go check in the console 
+do Users.all we should have an additional attribute admin: false that is always false
+2.6.1 :001 > User.all
+   (0.6ms)  SELECT sqlite_version(*)
+  User Load (0.3ms)  SELECT "users".* FROM "users" LIMIT ?  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<User id: 2, username: "updating from user1", email: "aniss@gmail.com", password_digest: [FILTERED], created_at: "2020-07-09 22:31:34", updated_at: "2020-07-09 22:37:00", admin: false>, #<User id: 
+3, username: "i will delete", email: "iwilldelete@mail.com", password_digest: [FILTERED], created_at: "2020-07-09 
+22:45:20", updated_at: "2020-07-09 22:45:20", admin: false>]>
+2.6.1 :002 > user = User.first
+  User Load (0.3ms)  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?  [["LIMIT", 1]]
+ => #<User id: 2, username: "updating from user1", email: "aniss@gmail.com", password_digest: [FILTERED], created_at: "2020-07-09 22:31:34", updated_at: "2020-07-09 22:37:00", admin: false>
+2.6.1 :003 > user.admin?
+ => false 
+in the console we can do user.toggle!(:admin) so that the local variable we have defined will toggle the admin value on 
+so that user now is an admin
+this will look as follows
+
+
+2.6.1 :001 > user = User.find(4)
+   (0.6ms)  SELECT sqlite_version(*)
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+ => #<User id: 4, username: "ADMIN", email: "admin@mail.com", password_digest: [FILTERED], created_at: "2020-07-09 23:52:09", updated_at: "2020-07-09 23:52:09", admin: false>
+2.6.1 :002 > user.toggle!(:admin)
+   (0.1ms)  begin transaction
+  User Update (5.8ms)  UPDATE "users" SET "updated_at" = ?, "admin" = ? WHERE "users"."id" = ?  [["updated_at", "2020-07-09 23:52:47.280914"], ["admin", 1], ["id", 4]]
+   (9.4ms)  commit transaction
+ => true
+so now we can use this feature and add special previlages for admins using views and controllers
