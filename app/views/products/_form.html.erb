@@ -5,9 +5,13 @@
 <%# rails guide form_helper %>
 <%# 2.3.1 Dealing with Namespaces
 If you have created namespaced routes, form_with has a nifty shorthand for that too. If your application has an admin namespace then %>
-<%if current_user %>
+<h5 class=" red-text">If Category is not dropping just relaod the page</h5>
 <%= form_with(model: [:user, @product], local: true) do |f|%>
+  
 
+   <h4>Category</h4> 
+   <div class="dropdown-trigger btn"> <%= f.collection_select(:category_ids, Category.all, :id, :name) %> </div>
+  
       <h4>Product Name:</h4> 
       <%= f.text_field :name  %><br/>
 
@@ -22,23 +26,23 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
 <br>
 <%# --------------------------------------------------- %>
 <%# this is showing when i inspect but not displaying for some reason bug!!! %>
-    <h4>Category</h4> 
-    <%=f.collection_select(:category_ids, Category.all, :id, :name)%>
+   
+    
+
+
+
+    <button class="btn-floating btn-large pulse pink" type="submit" name="action">Create 
+    <i class="material-icons left">cloud</i>
+  </button>
+
   <%end%>
+  
 <br/>
 <br/>
 <%# -------------------------------------------------- %>
- <button class="btn-floating btn-large pulse pink" type="submit" name="action">Create 
-    <i class="material-icons left">cloud</i>
-  </button>
 
 
 <%# back %>
 <br><br>
  <a class="btn waves-effect waves-light" href='<%=root_path%>'>Back
   </a>
-  <%end%>
-<br><br><br>
-<div class="btn waves-effect waves light">
-  <%= button_to 'Product Listing Page', user_products_path%>
-  </div>
