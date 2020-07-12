@@ -9,7 +9,9 @@
 <br>
  <%=@product.description%>
  <br>
- <%=@product.categories%>
+ <%@product.categories.each do |cat|%>
+ <%=cat.name%>
+ <%end%>
         </div>
           </div>
             </div>

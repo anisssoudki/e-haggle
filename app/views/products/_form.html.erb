@@ -8,9 +8,11 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
 <h5 class=" red-text">If Category is not dropping just relaod the page</h5>
 <%= form_with(model: [:user, @product], local: true) do |f|%>
   
-
-   <h4>Category</h4> 
-   <div class="dropdown-trigger btn"> <%= f.collection_select(:category_ids, Category.all, :id, :name) %> </div>
+    
+ <h4>Category</h4> 
+ <form_for (@category)>
+    <%= f.collection_select(:category_ids, Category.all, :id, :name) %> 
+  
   
       <h4>Product Name:</h4> 
       <%= f.text_field :name  %><br/>
@@ -27,7 +29,6 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
 <%# --------------------------------------------------- %>
 <%# this is showing when i inspect but not displaying for some reason bug!!! %>
    
-    
 
 
 

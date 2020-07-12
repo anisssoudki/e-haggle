@@ -9,6 +9,8 @@ class CategoriesController < ApplicationController
 
    def create
     @category = Category.new(category_params)
+    @category.user = current_user
+      
     if @category.save 
 flash[:green] = "Created Category Successfully"
 redirect_to @category
@@ -42,7 +44,6 @@ render 'new'
       
         def category_params
           params.require(:category).permit(:name)
-          
         end
       
         # def require_admin

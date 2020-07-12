@@ -18,10 +18,12 @@ class ProductsController < ApplicationController
     def edit
     end
 
+    
     def create
       @product = Product.new(product_params)
       @product.user = current_user
-      
+      # @product.categories = product_params.category_ids
+   
         if   @product.save 
          
             flash[:notice] = "Product has been successfully posted to e-haggle"
@@ -53,7 +55,9 @@ class ProductsController < ApplicationController
 
 
       def product_params
-        params.require(:product).permit(:name, :price, :description, :image, :category_ids => [:id, :name] )
+        params.require(:product).permit(:name, :price, :description, :image, :category_ids)
+       
+        # byebug
       end
 
 
