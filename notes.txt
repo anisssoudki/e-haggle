@@ -49,6 +49,11 @@ after around 8 or 9 hours of trying to figure out how to import jquery for the m
 https://medium.com/@guilhermepejon/how-to-install-materialize-css-in-rails-6-0-0-beta2-using-webpack-347c03b7104e
 https://www.botreetechnologies.com/blog/introducing-jquery-in-rails-6-using-webpacker 
 following these 2 guids it worked with some slight changes that i have notated above the files also make sure to create a stylesheet folder inside of the javascript file in the asset pipeline and import the materialize there using this code @import url(materialize-css/dist/css/materialize);
+ resolved_paths: ['app/assets'] this code inside webpacker.yml 
+ u can chose to import the stylesheet assets in the app/stylesheets we have to import that in the javascript/stylesheets(that we created)/application.css (import bootstrap or whatever ur using for css and also @import "stylesheets/app.css(or whatever u named that file) ) and all of this because of the rails update cause rails is using webpacker now so we have to kind of go around and manually set everything up also note whatever css file we create we have to import it inside of the main css app in the stylesheets so it works
+https://www.youtube.com/watch?v=88lFAksFvJI follow this video
+
+
 
 moving on working on the user model I saw some stuff about validating the user email in a certain hashing method 
 and i also found a good resource like a website to check the format for email 

@@ -1,0 +1,4 @@
+<%# this is written in jqurey %>
+
+$("#like-count").html("<%=j render 'users/products/likes', product: @product%>");
+$("#like-link").html("<%= j render 'users/products/likes_link', product: @product%>");

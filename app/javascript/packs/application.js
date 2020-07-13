@@ -24,8 +24,13 @@ require ("materialize")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+global.$ = jQuery;
+
 import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
+
+
+
 
 $(document).on('turbolinks:load', function() {
 
@@ -35,3 +40,5 @@ $(document).on('turbolinks:load', function() {
   $(document).ready(function(){
     $('select').formSelect();
   });
+
+  $('.like-btn').addClass('like-btn');

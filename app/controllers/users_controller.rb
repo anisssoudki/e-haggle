@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
 def index 
     @users = User.all 
+    @newest_users = User.last(5)
 end
 
 def show 

@@ -4,6 +4,25 @@
         <div class="center">
           <img style="width:100px; height:auto">
                 <%=image_tag(@product.image, style:'width:15%')%>
+                <%# ---------------------------------------------- %>
+              
+ <div>
+  <div id="like-link">
+    <%= render 'products/likes', product: @product%>
+    
+  </div>
+  <div id="like-link">
+    <%= render 'products/like_link', product: @product%>
+  </div>
+</div>
+    <span>
+      <p>
+      <i class="material-icons">thumb_up</i>
+      </p>
+    </span>
+  </div>
+<span class= "likes-count"><%@product.get_upvotes.size%></span>
+<%# ----------------------------------------------------------- %>
                 <br><br>
 <span class="card-title"><strong><%=@product.name%></strong> $<%=@product.price %></span>
 <br>

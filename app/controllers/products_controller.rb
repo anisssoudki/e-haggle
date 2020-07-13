@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
-    before_action :set_product, only: [:show, :edit, :update, :destroy]
+    before_action :set_product, only: [:show, :edit, :update, :destroy, :like]
     before_action :require_user, except: [:show, :index]
-    before_action :require_same_user, only: [:edit, :update, :destroy]
-   
+    before_action :require_same_user, only: [:edit, :update, :destroy, :like]
+ 
+
+
     def show 
+     
     end
 
     def index 
@@ -21,8 +24,9 @@ class ProductsController < ApplicationController
     
     def create
       @product = Product.new(product_params)
+      
       @product.user = current_user
-      # @product.categories = product_params.category_ids
+     
    
         if   @product.save 
          
@@ -35,6 +39,7 @@ class ProductsController < ApplicationController
     end
     
     def update 
+     
        if  @product.update(product_params) 
         flash[:notice] = "Product was updated successfully"
         redirect_to user_product_path(@product) 
@@ -50,12 +55,24 @@ class ProductsController < ApplicationController
     end
 
 
+    def like
+      if current_user.voted_for? @product
+      @product.unliked_by current_user
+     redirect_to user_product_path(current_user, @product)
+      else 
+        @product.liked_by current_user
+        redirect_to user_product_path(current_user, @product)
+      end
+      
+      end
+
+
     private
 
 
 
       def product_params
-        params.require(:product).permit(:name, :price, :description, :image, :category_ids)
+        params.require(:product).permit(:name, :price, :description, :image, :category_ids, :like)
        
         # byebug
       end
