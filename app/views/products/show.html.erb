@@ -1,44 +1,46 @@
 <h1 class="center">Showing<strong class=pink-text text-lighten-2  > <%=@product.name%></strong> details</h1>
  <div class="col s12 m7">
       <div class="card">
-        <div class="center">
-          <img style="width:100px; height:auto">
-                <%=image_tag(@product.image, style:'width:15%')%>
-                <%# ---------------------------------------------- %>
-              
- <div>
-  <div id="like-link">
-    <%= render 'products/likes', product: @product%>
-    
+            <div class="center">
+                    <img style="width:100px; height:auto">
+                    <%=image_tag(@product.image, style:'width:15%')%>  
+            </div>
+            <div class=center id="like-link">
+                     <%= render 'products/likes', product: @product%>          
+            </div>
+            <div class=center id="like-link">
+                     <%= render 'products/like_link', product: @product%>
+            </div>
+      </div>  
   </div>
-  <div id="like-link">
-    <%= render 'products/like_link', product: @product%>
-  </div>
-</div>
-    
-  </div>
+
 <span class= "likes-count"><%@product.get_upvotes.size%></span>
+<%@product.categories.each do |cat|%>
+ <p class="center">Category:  <%=cat.name%></p>
+ <%end%>
 <%# ----------------------------------------------------------- %>
                 <br><br>
-<span class="card-title"><strong><%=@product.name%></strong> $<%=@product.price %></span>
+<div class="center">item name: <strong><%=@product.name%></strong></div>
+<div class="center">selling for: $<%=@product.price %></div>
 <br>
- <%=@product.description%>
+ <div class="center">item description: <%=@product.description%></div>
  <br>
- <%@product.categories.each do |cat|%>
- <%=cat.name%>
- <%end%>
-        </div>
-          </div>
-            </div>
-        <%# --------------------------------------------- %>
+ 
+        
+        <%# --------------------------------------------- comments %>
 
 
 
-        <%# ----------------------------------------------- %>
+
+
+
+
+
+       <%# --------------------------------------------- %>
 
  <% if logged_in? && (@product.user == current_user || current_user.admin? ) %>
 
-          <span class= "right-align">
+          
   <div class= "btn-floating btn-large pulse lime lighten-5"> <%= link_to 'Update', edit_user_product_path(@product)%>
 </div>
 </span>
@@ -59,4 +61,9 @@
 
 <%end%>
 
+        <%# ----------------------------------------------- %>
+
+
+
 <%= link_to 'Product Listing Page', user_products_path%>
+
