@@ -8,18 +8,18 @@ class SessionsController < ApplicationController
       user = User.find_by(email: session_params[:email])
         if user && user.authenticate(session_params[:password])
         session[:user_id] = user.id
-        flash[:green] = "Logged in successfully"
+        flash[:msg] = "Logged in successfully"
         redirect_to user_path(user)
       else
         
         redirect_to login_path
-        flash[:yellow] = "hmmm, looks like the information you entered doesn't match our records."
+        flash[:err] = "hmmm, looks like the information you entered doesn't match our records."
       end
     end
   
     def logout
       session.clear
-      flash[:green] = "Logged out"
+      flash[:err] = "Logged out"
       redirect_to root_path
     end
 

@@ -1,5 +1,5 @@
 <% flash.each do |name, msg| %>
- <span class="center btn pulse <%= name == "yellow" ? "red" : "green darken-3" %>" >
+ <span class="center btn pulse <%= name == "err" ? "red" : "green darken-3" %>" >
  <%= msg %>
  </span>
  <%end%>

@@ -9,15 +9,16 @@ class CategoriesController < ApplicationController
 
    def create
     @category = Category.new(category_params)
-    @category.user = current_user
+   
       
     if @category.save 
-flash[:green] = "Created Category Successfully"
-redirect_to @category
+      flash[:notice] = "Created Category Successfully"
+      redirect_to categories_path
     else
-render 'new'
+      render 'new'
     end
    end
+
    def edit
     @category = Category.find(params[:id])
   end
@@ -25,8 +26,8 @@ render 'new'
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:green] = "Category name updated successfully"
-      redirect_to @category
+      flash[:notice] = "Category name updated successfully"
+      redirect_to categories_path
     else
       render 'edit'
     end
@@ -36,10 +37,7 @@ render 'new'
     @category = Category.all
    end
 
-    def show
-     @category = Category.find(params[:id])
-    end
-
+  
         private
       
         def category_params

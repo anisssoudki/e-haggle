@@ -30,7 +30,7 @@ def create
     else
      
       render "new"
-      flash[:alert] = "you have entered incorrect information please try again"
+      flash[:err] = "you have entered incorrect information please try again"
     end
 end
 
@@ -47,7 +47,7 @@ def destroy
   @user.destroy
   # the if statment prevent the session of ending if ur an admin
   session[:user_id] = nil if @user == current_user
-  flash[:notice] = "Account and all associated Products successfully deleted"
+  flash[:err] = "Account and all associated Products successfully deleted"
   redirect_to root_path
 end
 
@@ -62,7 +62,7 @@ private
 
   def require_same_user
     if current_user != @user && !current_user.admin?
-      flash[:alert] = "You can only edit or delete your own account"
+      flash[:err] = "You can only edit or delete your own account"
       redirect_to @user
     end
 

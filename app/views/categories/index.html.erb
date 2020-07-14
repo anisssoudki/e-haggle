@@ -1,3 +1,30 @@
-<%@category.each do |c|%>
-<%=c.name%>
+<%if logged_in? && current_user.admin?%>
+
+<h3 class="center">All Created Categories 
+<br>
+<%= link_to 'Create new category', new_category_path%>
+
+</h3>
+<%@category.each do |category|%>
+<ul>
+    <li>
+        <p class= "center">
+        <%=category.name%> <%= link_to 'Edit Category', edit_category_path(category)%>
+        </p>
+    </li>
+</ul>
 <%end%>
+<%elsif logged_in?%>
+
+
+<%else%>
+
+<h3 class ='center red-text' >Please logged_in first ->
+<%= link_to 'login', login_path%>
+</h3>
+<%end%>
+
+
+
+
+

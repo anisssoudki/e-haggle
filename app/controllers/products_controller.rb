@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update, :destroy, :like]
     before_action :require_user, except: [:show, :index]
-    before_action :require_same_user, only: [:edit, :update, :destroy, :like]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
  
 
 
@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
     end
 
     def index 
-        @products = Product.paginate(page: params[:page], per_page: 20)
+      # paginate rirectly query from the database like saying get me the first 5 pages than send a nexttoken to get the next 5 its a more abstract concept
+        @products = Product.paginate(page: params[:page], per_page: 5)
     end
 
     def new
@@ -86,7 +87,7 @@ class ProductsController < ApplicationController
       def require_same_user
         # if current user is admin we will let him have his way and edit anyones account
         if current_user != @product.user && !current_user.admin?
-          flash[:alert] = "You can only edit or delete your own account"
+          flash[:err] = "You can only edit or delete your own account"
           redirect_to user_product_path(@product)
         end
       end

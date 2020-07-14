@@ -18,6 +18,7 @@
   <ul id='dropdown1' class='dropdown-content'>
   <%if current_user.admin?%>
     <li  class="btn">  <%= link_to "ADMIN",users_path if current_user.admin?%> </li>
+    <li  class="btn">  <%= link_to "Categories",categories_path if current_user.admin?%> </li>
     <%end%>
     <li><a href=<%=edit_user_path(@user)%>>Edit Your Profile</a></li>
     <%# <%=link_to "del", user_path(@user), method: :delete, data: {confirm: "Warning!!!!! this will erase everything"%>
@@ -39,28 +40,30 @@
 <%end%>
 
 </div>
+  <h3 class= "center">MY products</h3>
 <% @user.products.each do |product|%>
   <% if logged_in? && (product.user == current_user || current_user.admin?) %>
       <div class="center">
       <br><br><br><br><br>
    
        <h3 class="waves-effect waves-light btn pulse pink"><i class="material-icons left">cloud</i><%=product.id%> <%= link_to 'details', user_product_path(current_user, product)%></h3>
+       
        <h4>  <div class="col s1"><%= product.name%><br></div></h4>
           <h4><div class="col s1">  <%= product.price%> $</div></h4>
-          <div class="col s1"><%=image_tag(product.image, style: 'auto')%></div>
+          <div class="col s1"><%=image_tag(product.image, style:'width:15%')%></div>
+          
     </div>
     <%# ---------------------------create edit delete actions for product %>
 
 
  <%# ------------------------------------------------------------------------------------------- %>
-       <%product.categories.each do |cat|%>
-       <%=cat.name%>
-      <%end%>
+      
 
          <%end%>
         
 
 <%end%>
+
 <br> <br><br><br><br><br><br> <br><br><br><br><br><br> <br><br><br><br><br>
 
 

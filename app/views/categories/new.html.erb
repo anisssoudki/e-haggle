@@ -1,8 +1,2 @@
-
-
-<%= render 'shared/errors', obj: @category %>
-<%=form_for(@category) do |f|%>
-<h4>Category Name:</h4>
-<%=f.text_field :name%>
-<%=f.submit%>
-<%end%>
+<h3 class="center"> Create New Category </h3>
+<%=render 'form'%>

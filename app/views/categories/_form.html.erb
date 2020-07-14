@@ -1,0 +1,18 @@
+<%if logged_in? && current_user.admin?%>
+
+<%= render 'shared/errors', obj: @category %>
+<%=form_for(@category) do |f|%>
+<h4>Category Name:</h4>
+<%=f.text_field :name%>
+<%=f.submit%>
+<%end%>
+
+<%elsif !logged_in?%>
+<h3 class ='center red-text' >Please logged_in first ->
+<%= link_to 'login', login_path%>
+</h3>
+<%else%>
+<h3 class ='center red-text' >This is restricted to ADMIN Users only ->
+<%= link_to 'home', root_path%>
+</h3>
+<%end%>
